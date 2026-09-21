@@ -1,0 +1,1 @@
+const router=require("express").Router();const c=require("../controllers/mealController");const {protect}=require("../middleware/auth");router.post("/",protect,c.saveRecord);router.get("/:userId",protect,c.records);router.put("/:id",protect,c.updateRecord);router.delete("/:id",protect,c.removeRecord);module.exports=router;

@@ -1,0 +1,6 @@
+import React, { useEffect, useState } from "react";
+import { useAuth } from "../context/AuthContext";
+import { api } from "../services/api";
+
+const plans={Underweight:["Milk","Nuts","Bananas","Whole grains","Pulses"],Normal:["Fruits","Vegetables","Whole grains","Pulses","Adequate protein"],Overweight:["Vegetables","Fruits","Whole grains","Pulses","Controlled portions","Reduced sugary foods"],Obese:["Vegetables","Fruits","Whole grains","Portion awareness","Regular physical activity"]};
+export default function Diet(){const {user}=useAuth();const [cat,setCat]=useState("Normal");useEffect(()=>{api.bmiHistory(user._id).then(r=>{if(r.records[0])setCat(r.records[0].category)}).catch(()=>{})},[user]);return <section className="section narrow"><p className="eyebrow">DIET GUIDE</p><h1>Simple nutrition guidance</h1><p className="lead">Based on your latest BMI category: <b>{cat}</b></p><div className="food-list">{(plans[cat]||plans.Normal).map((x,i)=><div className="food-item" key={x}><span>{i+1}</span><b>{x}</b></div>)}</div><div className="notice">These are general educational suggestions. Avoid extreme diets and seek qualified professional advice for personal medical or nutrition needs.</div></section>}

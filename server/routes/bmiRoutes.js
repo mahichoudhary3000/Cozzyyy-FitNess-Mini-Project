@@ -1,0 +1,1 @@
+const router=require("express").Router();const c=require("../controllers/bmiController");const {protect}=require("../middleware/auth");router.post("/",protect,c.create);router.get("/:userId",protect,c.history);router.delete("/:id",protect,c.remove);module.exports=router;

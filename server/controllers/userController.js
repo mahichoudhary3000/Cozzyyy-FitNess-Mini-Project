@@ -1,0 +1,5 @@
+const User=require("../models/User");const BMI=require("../models/BMIRecord");const MealRecord=require("../models/MealRecord");
+exports.list=async(req,res)=>res.json({users:await User.find().select("-password").sort({createdAt:-1})});
+exports.get=async(req,res)=>{const u=await User.findById(req.params.id).select("-password");if(!u)return res.status(404).json({message:"User not found"});res.json({user:u})};
+exports.update=async(req,res)=>{const allowed=["name","age","gender","height","weight"];const data={};allowed.forEach(k=>{if(req.body[k]!==undefined)data[k]=req.body[k]});const u=await User.findByIdAndUpdate(req.params.id,data,{new:true}).select("-password");if(!u)return res.status(404).json({message:"User not found"});res.json({user:u})};
+exports.remove=async(req,res)=>{const u=await User.findByIdAndDelete(req.params.id);if(!u)return res.status(404).json({message:"User not found"});await BMI.deleteMany({userId:req.params.id});await MealRecord.deleteMany({userId:req.params.id});res.json({message:"User deleted"})};

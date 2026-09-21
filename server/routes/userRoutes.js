@@ -1,0 +1,1 @@
+const router=require("express").Router();const c=require("../controllers/userController");const {protect,adminOnly}=require("../middleware/auth");router.get("/",protect,adminOnly,c.list);router.get("/:id",protect,c.get);router.put("/:id",protect,c.update);router.delete("/:id",protect,adminOnly,c.remove);module.exports=router;
