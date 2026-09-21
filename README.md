@@ -1,4 +1,4 @@
-<img width="835" height="470" alt="image" src="https://github.com/user-attachments/assets/fdfab0b7-e2c7-46a7-b819-a9f78b357cb6" /># Cozzyyy FitNess — Fitness Guide Assistant
+# Cozzyyy FitNess — Fitness Guide Assistant
 
 A beginner-friendly college mini project integrating AWT, DBMS and Software Engineering.
 
@@ -117,6 +117,7 @@ The project demonstrates create, read, update, delete, references using ObjectId
 The project includes screenshots of the following modules:
 
 - Home Page
+
   <img width="835" height="470" alt="image" src="https://github.com/user-attachments/assets/618c22b4-3ab4-4b4e-9bad-d3c6f394fe14" />
 
 - Signup and Login
